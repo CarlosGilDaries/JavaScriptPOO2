@@ -1,13 +1,46 @@
-Array.prototype.media = function() {
-    const total = this.reduce((acum, acVal) => acum + acVal, 0);
+class Punto {
+    constructor(x, y){
+        if (isNaN(x))
+            this.x = 0;
+        else
+            this.x = x;
 
-    return total / this.length;
+        if (isNaN(y))
+            this.y = 0;
+        else
+            this.y = y;
+    }
+
+    cambiar(a, b) {
+        if (!isNaN(a) && !isNaN(b)) {
+            this.x = a;
+            this.y = b;
+        }
+    }
+
+    copia() {
+        let a = new Punto(this.x, this.y);
+        return a;
+    }
+
+    suma (a) {
+        if (a instanceof Punto) {
+            let b = new Punto(this.x + a.x, this.y + a.y);
+    
+            return b;
+        }
+    }
 }
 
-$prueba = [5,5,5,5];
-$prueba2 = [1,2,3,4];
-$prueba3 = [50,100,150];
+let puntoA = new Punto(1,2);
+let puntoB = new Punto(3,4);
+let puntoC = new Punto('a', 'b');
 
-console.log($prueba.media());
-console.log($prueba2.media());
-console.log($prueba3.media());
+console.log(puntoC);
+
+puntoA.cambiar(5,6);
+console.log(puntoA);
+
+console.log(puntoB.copia());
+
+console.log(puntoA.suma(puntoB));
